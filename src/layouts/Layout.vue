@@ -3,9 +3,9 @@
     <!-- <LoadeR /> -->
     <div class="wrapper">
       <!-- Sidebar  -->
-      <SideBar></SideBar>
+      <SideBar @toggle="sidebarMini" ></SideBar>
       <!-- TOP Nav Bar -->
-      <NavBar></NavBar>
+      <NavBar @toggle="sidebarMini" ></NavBar>
        <!-- Right Nav Bar -->
       <RightSideBar toggleClass="top-50 setting-toggle iq-card">
         <i class="ri-sound-module-fill font-size-18 text-primary" />
@@ -32,6 +32,7 @@
 
 <script>
 // import LoadeR from './loader/Loader'
+import { socialvue } from '../config/pluginInit'
 import NavBar from '../components/navbar/NavBar.vue'
 import SideBar from '../components/sidebar/SideBar.vue'
 import RightSideBar from '../components/rightsidebar/RightSideBar'
@@ -43,6 +44,16 @@ export default {
     SideBar,
     RightSideBar,
     FooterStyle1
+  },
+  methods: {
+    sidebarMini () {
+      socialvue.triggerSet()
+    },
+    logout () {
+      localStorage.removeItem('user')
+      localStorage.removeItem('access_token')
+      this.$router.push({ name: 'auth1.sign-in1' })
+    }
   }
 }
 </script>

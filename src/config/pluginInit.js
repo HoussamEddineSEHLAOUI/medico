@@ -66,7 +66,7 @@ export const socialvue = {
     })
   },
   loaderInit () {
-    let load = document.getElementById('loading')
+    var load = document.getElementById('loading')
     animation.fadeOut(load, { duration: 0 })
     animation.fadeOut(load, { duration: 1400 })
     setTimeout(() => {
@@ -75,7 +75,7 @@ export const socialvue = {
     // $('#loading').delay(1000).fadeOut('slow')
   },
   activeRoute () {
-    let obj = {
+    var obj = {
       name: Route.currentRoute.meta.name,
       breadCrumb: [
         {
@@ -96,10 +96,10 @@ export const socialvue = {
       // Remove any old one
       $('.ripple').remove()
       // Setup
-      let posX = $(this).offset().left
-      let posY = $(this).offset().top
-      let buttonWidth = $(this).width()
-      let buttonHeight = $(this).height()
+      var posX = $(this).offset().left
+      var posY = $(this).offset().top
+      var buttonWidth = $(this).width()
+      var buttonHeight = $(this).height()
 
       // Add the element
       $(this).prepend("<span class='ripple'></span>")
@@ -112,8 +112,8 @@ export const socialvue = {
       }
 
       // Get the center of the element
-      let x = e.pageX - posX - buttonWidth / 2
-      let y = e.pageY - posY - buttonHeight / 2
+      var x = e.pageX - posX - buttonWidth / 2
+      var y = e.pageY - posY - buttonHeight / 2
 
       // Add the ripples CSS and start the animation
       $('.ripple').css({
@@ -129,7 +129,7 @@ export const socialvue = {
     const elementExist = this.checkElement('class', 'iq-full-screen')
     if (elementExist) {
       $(document).on('click', '.iq-full-screen', function () {
-        let elem = $(this)
+        var elem = $(this)
         if (!document.fullscreenElement &&
           !document.mozFullScreenElement &&
           !document.webkitFullscreenElement &&
@@ -161,10 +161,10 @@ export const socialvue = {
   triggerSet () {
     const elementExist = this.checkElement('class', 'wrapper-menu')
     if (elementExist) {
-      let wrapperMenu = document.querySelector('.wrapper-menu')
-      let body = document.querySelector('body')
+      var wrapperMenu = document.querySelector('.wrapper-menu')
+      var body = document.querySelector('body')
       this.sidebarMiniSetEvent(wrapperMenu, body)
-      /* for (let i = 0; i < wrapperMenu.length; i++) {
+      /* for (var i = 0; i < wrapperMenu.length; i++) {
       } */
     }
   },
@@ -206,8 +206,8 @@ export const socialvue = {
       e.stopPropagation()
     })
     $(document).on('click', function (e) {
-      let myTargetElement = e.target
-      let selector, mainElement
+      var myTargetElement = e.target
+      var selector, mainElement
       if ($(myTargetElement).hasClass('search-toggle') || $(myTargetElement).parent().hasClass('search-toggle') || $(myTargetElement).parent().parent().hasClass('search-toggle')) {
         if ($(myTargetElement).hasClass('search-toggle')) {
           selector = $(myTargetElement).parent()
@@ -228,7 +228,9 @@ export const socialvue = {
         mainElement.toggleClass('active')
 
         e.preventDefault()
-      } else if ($(myTargetElement).is('.search-input')) {} else {
+      } else if ($(myTargetElement).is('.search-input')) {
+        console.log('HEY BUG')
+      } else {
         $('.navbar-list li').removeClass('iq-show')
         $('.navbar-list li .search-toggle').removeClass('active')
       }
@@ -236,8 +238,8 @@ export const socialvue = {
   },
 
   checkElement (type, element) {
-    let found = false
-    let elements
+    var found = false
+    var elements
     switch (type) {
       case 'class':
         elements = document.getElementsByClassName(element)
@@ -286,12 +288,13 @@ export const socialvue = {
   },
 
   getActiveLink (item, activeRoute) {
-    let active = false
+    var active = false
     if (item.children !== undefined) {
       item.children.filter(function (child) {
         if (child.link.name === activeRoute) {
           active = true
         }
+        return active
       })
     } else {
       if (item.link.name === activeRoute) {
@@ -332,10 +335,10 @@ export const socialvue = {
     })
   },
   random (length) {
-    let result = ''
-    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    let charactersLength = characters.length
-    for (let i = 0; i < length; i++) {
+    var result = ''
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    var charactersLength = characters.length
+    for (var i = 0; i < length; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength))
     }
     return result
@@ -345,7 +348,7 @@ export const socialvue = {
     if (removedIndex === null && addedIndex === null) return arr
 
     const result = [...arr]
-    let itemToAdd = payload
+    var itemToAdd = payload
 
     if (removedIndex !== null) {
       itemToAdd = result.splice(removedIndex, 1)[0]
@@ -359,13 +362,13 @@ export const socialvue = {
   },
   generateItems (count, creator) {
     const result = []
-    for (let i = 0; i < count; i++) {
+    for (var i = 0; i < count; i++) {
       result.push(creator(i))
     }
     return result
   },
   bodyClassCheck (className, modeName = 'light') {
-    let body = document.querySelector('body')
+    var body = document.querySelector('body')
     body.classList = ''
     // body.classList.add(className)
     body.classList.add(modeName)
@@ -391,7 +394,7 @@ export const animation = {
     },
     bounce: function (progress) {
       // eslint-disable-next-line no-unused-vars
-      for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
+      for (var a = 0, b = 1, result; 1; a += b, b /= 2) {
         if (progress >= (7 - 4 * a) / 11) {
           return -Math.pow((11 - 6 * a - 11 * progress) / 4, 2) + Math.pow(b, 2)
         }
@@ -402,15 +405,15 @@ export const animation = {
     }
   },
   animate: function (options) {
-    let start = new Date()
-    let id = setInterval(function () {
-      let timePassed = new Date() - start
-      let progress = timePassed / options.duration
+    var start = new Date()
+    var id = setInterval(function () {
+      var timePassed = new Date() - start
+      var progress = timePassed / options.duration
       if (progress > 1) {
         progress = 1
       }
       options.progress = progress
-      let delta = options.delta(progress)
+      var delta = options.delta(progress)
       options.step(delta)
       if (progress === 1) {
         clearInterval(id)
@@ -418,7 +421,7 @@ export const animation = {
     }, options.delay || 10)
   },
   fadeOut: function (element, options) {
-    let to = 1
+    var to = 1
     this.animate({
       duration: options.duration,
       delta: function (progress) {
@@ -431,7 +434,7 @@ export const animation = {
     })
   },
   fadeIn: function (element, options) {
-    let to = 0
+    var to = 0
     this.animate({
       duration: options.duration,
       delta: function (progress) {

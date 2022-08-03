@@ -165,7 +165,21 @@
 
 <script>
 export default {
-  name: 'SideBar'
+  name: 'SideBar',
+  props: {
+    horizontal: { type: Boolean },
+    toggleButton: { type: Boolean, default: true }
+  },
+  components: {},
+  methods: {
+    miniSidebar () {
+      this.$emit('toggle')
+    }
+  },
+  data () {
+    return {
+    }
+  }
 }
 </script>
 

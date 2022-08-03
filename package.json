@@ -8,8 +8,15 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
+    "bootstrap": "^5.2.0",
     "core-js": "^3.8.3",
+    "font-awesome": "^4.7.0",
+    "fortawesome": "^0.0.1-security",
+    "jquery": "^3.6.0",
     "lottie-web": "^5.9.6",
+    "node-snackbar": "^0.1.16",
+    "smooth-scrollbar": "^8.7.5",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
@@ -23,12 +30,13 @@
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/eslint-config-standard": "^6.1.0",
+    "css-loader": "^6.7.1",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-vue": "^8.0.3",
-    "sass": "^1.54.0",
+    "sass": "^1.54.1",
     "sass-loader": "^13.0.2",
     "webpack": "^5.74.0"
   },
