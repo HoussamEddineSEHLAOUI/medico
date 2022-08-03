@@ -1,11 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// import HomeView from '../views/HomeView.vue'
+
+/* Layouts */
+const Layout = () => import('../layouts/Layout')
+
+// About page
+// const About = () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+
+// Mes Dossier
+const NouveauDossierView = () => import(/* webpackChunkName: "about" */ '../views/MesDossier/NouveauDossierView')
+
+const childRoutes = (prop, mode) => [
+  {
+    path: '/',
+    name: prop + '.list',
+    meta: { auth: true, name: 'Social App' },
+    component: NouveauDossierView
+  }
+]
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: Layout,
+    children: childRoutes('social')
   },
   {
     path: '/about',

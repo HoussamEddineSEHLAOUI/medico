@@ -10,6 +10,13 @@
       <RightSideBar toggleClass="top-50 setting-toggle iq-card">
         <i class="ri-sound-module-fill font-size-18 text-primary" />
       </RightSideBar>
+
+      <!-- page content -->
+      <div id="content-page" class="content-page">
+        <div class="container">
+          <router-view/>
+        </div>
+      </div>
     </div>
     <FooterStyle1>
       <template v-slot:left>

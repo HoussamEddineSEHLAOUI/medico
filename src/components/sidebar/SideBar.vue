@@ -5,33 +5,33 @@
             <nav class="iq-sidebar-menu">
                <ul id="iq-sidebar-toggle" class="iq-menu">
                   <li>
-                     <a href="../index.html" class="iq-waves-effect"><i class="las la-newspaper"></i><span>Newsfeed</span></a>
+                     <a href="../index.html" class="iq-waves-effect"><i class="las la-newspaper"></i><span>Nouveau dossier</span></a>
                   </li>
                   <li>
-                     <a href="../profile.html" class="iq-waves-effect"><i class="las la-user"></i><span>Profile</span></a>
+                     <a href="../profile.html" class="iq-waves-effect"><i class="las la-user"></i><span>Ma liste</span></a>
                   </li>
                   <li>
-                     <a href="../friend-list.html" class="iq-waves-effect"><i class="las la-user-friends"></i><span>Friend Lists</span></a>
+                     <a href="../friend-list.html" class="iq-waves-effect"><i class="las la-user-friends"></i><span>Label1</span></a>
                   </li>
                   <li>
-                     <a href="../group.html" class="iq-waves-effect"><i class="las la-users"></i><span>Group</span></a>
+                     <a href="../group.html" class="iq-waves-effect"><i class="las la-users"></i><span>Label2</span></a>
                   </li>
                   <li>
-                     <a href="../profile-images.html" class="iq-waves-effect"><i class="las la-image"></i><span>Profile Image</span></a>
+                     <a href="../profile-images.html" class="iq-waves-effect"><i class="las la-image"></i><span>Label3</span></a>
                   </li>
                   <li>
-                     <a href="../profile-video.html" class="iq-waves-effect"><i class="las la-video"></i><span>Profile Video</span></a>
+                     <a href="../profile-video.html" class="iq-waves-effect"><i class="las la-video"></i><span>Label4</span></a>
                   </li>
                   <li>
-                     <a href="../profile-event.html" class="iq-waves-effect"><i class="las la-film"></i><span>Profile Events</span></a>
+                     <a href="../profile-event.html" class="iq-waves-effect"><i class="las la-film"></i><span>Label5</span></a>
                   </li>
                   <li>
-                     <a href="../notification.html" class="iq-waves-effect"><i class="las la-bell"></i><span>Notification</span></a>
+                     <a href="../notification.html" class="iq-waves-effect"><i class="las la-bell"></i><span>Label6</span></a>
                   </li>
                   <li>
-                     <a href="../file.html" class="iq-waves-effect"><i class="las la-file"></i><span>Files</span></a>
+                     <a href="../file.html" class="iq-waves-effect"><i class="las la-file"></i><span>Label7</span></a>
                   </li>
-                  <li>
+                  <!-- <li>
                      <a href="../friend-request.html" class="iq-waves-effect"><i class="las la-anchor"></i><span>Friend Request</span></a>
                   </li>
                   <li>
@@ -48,8 +48,8 @@
                   </li>
                   <li>
                      <a href="../weather.html" class="iq-waves-effect"><i class="ri-snowy-line"></i><span>Weather</span></a>
-                  </li>
-                  <li>
+                  </li> -->
+                  <!-- <li>
                      <a href="../music.html" class="iq-waves-effect"><i class="ri-play-circle-line"></i><span>Music</span></a>
                   </li>
                   <li class="active">
@@ -154,7 +154,7 @@
                            </ul>
                         </li>
                      </ul>
-                  </li>
+                  </li> -->
 
                </ul>
             </nav>
