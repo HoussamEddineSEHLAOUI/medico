@@ -5,7 +5,7 @@
             <nav class="iq-sidebar-menu">
                <ul id="iq-sidebar-toggle" class="iq-menu">
                   <li>
-                     <a href="../index.html" class="iq-waves-effect"><i class="las la-newspaper"></i><span>Nouveau dossier</span></a>
+                     <router-link :to="'MedicoNewFile'" href="../index.html" class="iq-waves-effect"><i class="las la-newspaper"></i><span>Nouveau dossier</span></router-link>
                   </li>
                   <li>
                      <a href="../profile.html" class="iq-waves-effect"><i class="las la-user"></i><span>Ma liste</span></a>

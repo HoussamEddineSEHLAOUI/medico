@@ -6,7 +6,7 @@
                <div class="iq-navbar-logo d-flex justify-content-between">
                   <a href="../index.html">
                   <img src="@/assets/images/logo.png" class="img-fluid" alt="">
-                  <span>SocialV</span>
+                  <span>Medico</span>
                   </a>
                   <div class="iq-menu-bt align-self-center">
                   <div class="wrapper-menu">

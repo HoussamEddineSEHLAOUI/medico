@@ -8,14 +8,21 @@ const Layout = () => import('../layouts/Layout')
 // const About = () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
 
 // Mes Dossier
-const NouveauDossierView = () => import(/* webpackChunkName: "about" */ '../views/MesDossier/NouveauDossierView')
+const NouveauDossierView = () => import('../views/MesDossier/NouveauDossierView')
+const ListDossierView = () => import('../views/MesDossier/ListDossierView')
 
 const childRoutes = (prop, mode) => [
   {
     path: '/',
-    name: prop + '.list',
-    meta: { auth: true, name: 'Social App' },
+    name: 'MedicoNewFile',
+    meta: { auth: true, name: 'Medico App' },
     component: NouveauDossierView
+  },
+  {
+    path: '/l',
+    name: 'MedicoListFile',
+    meta: { auth: true, name: 'Medico App' },
+    component: ListDossierView
   }
 ]
 

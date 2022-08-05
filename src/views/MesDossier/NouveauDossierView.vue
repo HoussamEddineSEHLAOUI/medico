@@ -3,8 +3,8 @@
                   <div class="col-sm-12">
                      <div class="iq-card position-relative inner-page-bg bg-primary" style="height: 150px;">
                         <div class="inner-page-title">
-                           <h3 class="text-white">Validate Wizard Page</h3>
-                           <p class="text-white">lorem ipsum</p>
+                           <h3 class="text-white">Nouveau Dossier</h3>
+                           <p class="text-white"></p>
                         </div>
                      </div>
                   </div>
@@ -12,11 +12,11 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
-                              <h4 class="card-title">Validate Wizard</h4>
+                              <h4 class="card-title"></h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
-                           <div class="stepwizard mt-4">
+                           <!-- <div class="stepwizard mt-4">
                               <div class="stepwizard-row setup-panel">
                                  <div id="user" class="wizard-step active">
                                     <a @click="goTo(0)" class="active btn">
@@ -39,7 +39,7 @@
                                     </a>
                                  </div>
                               </div>
-                           </div>
+                           </div> -->
                            <form class="form">
                               <div v-if="currentI==0" class="row setup-content" id="user-detail">
                                  <div class="col-sm-12">
@@ -99,7 +99,7 @@
                                           <div class="col-md-6 form-group">
                                              <div class="form-group">
                                                 <label for="url" class="control-label">Date de début du droblème: *</label>
-                                                <input type="text" class="form-control" required="required" id="url" name="url" placeholder="Company Url.">
+                                                <input type="date" class="form-control" required="required" id="url" name="url" placeholder="Company Url.">
                                              </div>
                                           </div>
                                           <div class="col-md-6 form-group">
@@ -119,21 +119,17 @@
                                     <div class="col-md-12 p-0">
                                        <h3 class="mb-4">Documents:</h3>
                                        <div class="form-card text-left">
-                                       <div class="row">
-                                          <div class="col-7">
-                                             <h3 class="mb-4">Image Upload:</h3>
-                                          </div>
-                                          <div class="col-5">
-                                             <h2 class="steps">Step 3 - 4</h2>
-                                          </div>
+                                       <div class="form-group">
+                                          <label>Résultas Analyses:</label>
+                                          <input type="file" class="form-control" name="pic" accept="image/*" id="file-input">
                                        </div>
                                        <div class="form-group">
-                                          <label>Upload Your Photo:</label>
-                                          <input type="file" class="form-control" name="pic" accept="image/*">
+                                          <label>Radiologie (IRM ,Scanner):</label>
+                                          <input type="file" class="form-control" name="pic-2" accept="image/*" id="file-input">
                                        </div>
                                        <div class="form-group">
-                                          <label>Upload Signature Photo:</label>
-                                          <input type="file" class="form-control" name="pic-2" accept="image/*">
+                                          <label>Compte rendu médecins:</label>
+                                          <input type="file" class="form-control" name="pic-2" accept="image/*" id="file-input">
                                        </div>
                                     </div>
                                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" @click="goTo(3)" >Next</button>
@@ -146,7 +142,7 @@
                                     <div class="col-md-12 p-0">
                                        <h3 class="mb-4 text-left">Finish:</h3>
                                        <div class="row justify-content-center">
-                                          <div class="col-3"> <img src="images/page-img/img-success.png" class="fit-image" alt="img-success"> </div>
+                                          <div class="col-3"> <img src="@/assets/images/bg-03.jpg" class="fit-image" alt="img-success"> </div>
                                        </div>
                                     </div>
                                  </div>
@@ -174,11 +170,21 @@ export default {
   },
   data () {
     return {
-      currentI: 2
+      currentI: 0
     }
   }
 
 }
 </script>
 <style scoped>
+#file-input::-webkit-file-upload-button {
+   background-color: #e9ecef;
+   margin-top:1px;
+   border: 1px solid #ced4da;
+}
+#file-input{
+   padding-left: 0;
+   padding-top: 0;
+   color: #495057;
+}
 </style>
