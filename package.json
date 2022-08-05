@@ -18,13 +18,14 @@
     "lottie-web": "^5.9.6",
     "node-snackbar": "^0.1.16",
     "smooth-scrollbar": "^8.7.5",
-    "vue": "^3.2.13",
+    "vue": "^3.2.37",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@types/bootstrap": "^5.2.1",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",

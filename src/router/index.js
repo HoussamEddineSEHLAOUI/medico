@@ -10,6 +10,10 @@ const Layout = () => import('../layouts/Layout')
 // Mes Dossier
 const NouveauDossierView = () => import('../views/MesDossier/NouveauDossierView')
 const ListDossierView = () => import('../views/MesDossier/ListDossierView')
+/* User View */
+const Profile = () => import('../views/User/Profile')
+const ProfileEdit = () => import('../views/User/ProfileEdit')
+const AddUser = () => import('../views/User/AddUser')
 
 const childRoutes = (prop, mode) => [
   {
@@ -26,6 +30,27 @@ const childRoutes = (prop, mode) => [
   }
 ]
 
+const userChildRoute = (prop, mode = false) => [
+  {
+    path: 'profile',
+    name: prop + '.profile',
+    meta: { auth: true, name: 'Profile' },
+    component: Profile
+  },
+  {
+    path: 'profile-edit',
+    name: prop + '.edit',
+    meta: { auth: true, name: 'Edit Profile' },
+    component: ProfileEdit
+  },
+  {
+    path: 'add-user',
+    name: prop + '.add',
+    meta: { auth: true, name: 'Add Profile' },
+    component: AddUser
+  }
+]
+
 const routes = [
   {
     path: '/',
@@ -34,12 +59,11 @@ const routes = [
     children: childRoutes('social')
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/user',
+    name: 'user',
+    component: Layout,
+    meta: { auth: true },
+    children: userChildRoute('user')
   }
 ]
 
