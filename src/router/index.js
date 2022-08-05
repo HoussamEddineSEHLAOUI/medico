@@ -14,14 +14,14 @@ const ListDossierView = () => import('../views/MesDossier/ListDossierView')
 const childRoutes = (prop, mode) => [
   {
     path: '/',
-    name: 'MedicoNewFile',
+    name: prop + '.NewFile',
     meta: { auth: true, name: 'Medico App' },
     component: NouveauDossierView
   },
   {
-    path: '/l',
-    name: 'MedicoListFile',
-    meta: { auth: true, name: 'Medico App' },
+    path: '/listfiles',
+    name: prop + 'listfiles',
+    meta: { auth: true, name: 'listfiles' },
     component: ListDossierView
   }
 ]
