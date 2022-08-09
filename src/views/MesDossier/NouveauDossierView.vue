@@ -16,32 +16,32 @@
                            </div>
                         </div>
                         <div class="iq-card-body">
-                           <!-- <div class="stepwizard mt-4">
+                           <div class="stepwizard mt-4">
                               <div class="stepwizard-row setup-panel">
-                                 <div id="user" class="wizard-step active">
-                                    <a @click="goTo(0)" class="active btn">
+                                 <div id="user" :class="[ 'wizard-step' , {  active : active_el == 0  }]">
+                                    <a @click="activate(0)" class="active btn">
                                     <i class="ri-lock-unlock-line text-primary"></i><span>Informations Patient</span>
                                     </a>
                                  </div>
-                                 <div id="document" class="wizard-step" >
-                                    <a @click="goTo(1)"  class="btn btn-default" >
+                                 <div id="document" :class="[ 'wizard-step' , {  active : active_el == 1  }]" >
+                                    <a @click="activate(1)"  class="btn btn-default" >
                                     <i class="ri-user-fill text-danger"></i><span>Problème medical</span>
                                     </a>
                                  </div>
-                                 <div id="bank" class="wizard-step">
-                                    <a @click="goTo(2)"  class="btn btn-default">
+                                 <div id="bank" :class="[ 'wizard-step' , {  active : active_el == 2  }]">
+                                    <a @click="activate(2)"  class="btn btn-default">
                                     <i class="ri-camera-fill text-success"></i><span>Documents</span>
                                     </a>
                                  </div>
-                                 <div id="confirm" class="wizard-step">
-                                    <a @click="goTo(3)"  class="btn btn-default">
+                                 <div id="confirm" :class="[ 'wizard-step' , {  active : active_el == 3  }]">
+                                    <a @click="activate(3)"  class="btn btn-default">
                                     <i class="ri-check-fill text-warning"></i><span>Confirm</span>
                                     </a>
                                  </div>
                               </div>
-                           </div> -->
+                           </div>
                            <form class="form">
-                              <div v-if="currentI==0" class="row setup-content" id="user-detail">
+                              <div v-if="active_el==0" class="row setup-content"  id="user-detail">
                                  <div class="col-sm-12">
                                     <div class="col-md-12 p-0">
                                        <h3 class="mb-4">Informations Patient:</h3>
@@ -83,7 +83,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div v-if="currentI==1" class="row setup-content" id="document-detail">
+                              <div v-if="active_el==1" class="row setup-content" id="document-detail">
                                  <div class="col-sm-12">
                                     <div class="col-md-12 p-0">
                                        <h3 class="mb-4">Problème Médical:</h3>
@@ -102,11 +102,13 @@
                                                 <input type="date" class="form-control" required="required" id="url" name="url" placeholder="Company Url.">
                                              </div>
                                           </div>
-                                          <div class="col-md-6 form-group">
-                                             <div class="form-group">
-                                                <label for="url" class="control-label">Spécialité: *</label>
-                                                <input type="text" class="form-control" required="required" id="url" name="url" placeholder="Company Url.">
-                                             </div>
+                                          <div class="form-group col-md-6">
+                                             <label for="type" class="control-label">Spécialité: *</label>
+                                             <select class="form-control" id="type" name="type">
+                                                <option>California</option>
+                                                <option>Florida</option>
+                                                <option selected="">Autre</option>
+                                             </select>
                                           </div>
                                        </div>
                                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" @click="goTo(2)" >Next</button>
@@ -114,7 +116,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div v-if="currentI==2" class="row setup-content" id="bank-detail">
+                              <div v-if="active_el==2" class="row setup-content" id="bank-detail">
                                  <div class="col-sm-12">
                                     <div class="col-md-12 p-0">
                                        <h3 class="mb-4">Documents:</h3>
@@ -137,7 +139,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div v-if="currentI==3" class="row setup-content" id="cpnfirm-data">
+                              <div v-if="active_el==3" class="row setup-content" id="cpnfirm-data">
                                  <div class="col-sm-12">
                                     <div class="col-md-12 p-0">
                                        <h3 class="mb-4 text-left">Finish:</h3>
@@ -161,16 +163,13 @@ export default {
     miniSidebar () {
       this.$emit('toggle')
     },
-    goTo (par) {
-      this.currentI = par
-    },
-    goBack () {
-      this.currentI = this.currentI - 1
+    activate: function (el) {
+      this.active_el = el
     }
   },
   data () {
     return {
-      currentI: 0
+      active_el: 2
     }
   }
 

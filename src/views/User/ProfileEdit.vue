@@ -5,23 +5,23 @@
         <div class="iq-card-body p-0">
           <div class="iq-edit-list">
             <ul class="iq-edit-profile d-flex nav nav-pills">
-              <li class="col-md-3 p-0">
-                <a class="nav-link active" data-toggle="pill" href="#personal-information">
+              <li class="col-md-3 p-0 ">
+                <a :class="[ 'nav-link' , {  active : active_el == 0  }]" data-toggle="pill" @click="activate(0)">
                   Personal Information
                 </a>
               </li>
               <li class="col-md-3 p-0">
-                <a class="nav-link" data-toggle="pill" href="#chang-pwd">
+                <a :class="[ 'nav-link' , {  active : active_el == 1  }]"  data-toggle="pill" @click="activate(1)">
                   Change Password
                 </a>
               </li>
               <li class="col-md-3 p-0">
-                <a class="nav-link" data-toggle="pill" href="#emailandsms">
+                <a :class="[ 'nav-link' , {  active : active_el == 2  }]" data-toggle="pill" @click="activate(2)">
                   Email and SMS
                 </a>
               </li>
               <li class="col-md-3 p-0">
-                <a class="nav-link" data-toggle="pill" href="#manage-contact">
+                <a :class="[ 'nav-link' , {  active : active_el == 3  }]" data-toggle="pill" @click="activate(3)">
                   Manage Contact
                 </a>
               </li>
@@ -33,7 +33,7 @@
     <div class="col-lg-12">
       <div class="iq-edit-list-data">
         <div class="tab-content">
-          <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
+          <div :class="[ 'tab-pane fade' , {  active : active_el == 0  } , {  show : active_el == 0  }]" id="personal-information" role="tabpanel">
             <div class="iq-card">
               <div class="iq-card-header d-flex justify-content-between">
                 <div class="iq-header-title">
@@ -141,7 +141,7 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane fade" id="chang-pwd" role="tabpanel">
+          <div :class="[ 'tab-pane fade' , {  active : active_el == 1  } , {  show : active_el == 1  }]" id="chang-pwd" role="tabpanel">
             <div class="iq-card">
               <div class="iq-card-header d-flex justify-content-between">
                 <div class="iq-header-title">
@@ -169,7 +169,7 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane fade" id="emailandsms" role="tabpanel">
+          <div :class="[ 'tab-pane fade' , {  active : active_el == 2  } , {  show : active_el == 2  }]" id="emailandsms" role="tabpanel">
             <div class="iq-card">
               <div class="iq-card-header d-flex justify-content-between">
                 <div class="iq-header-title">
@@ -232,7 +232,7 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane fade" id="manage-contact" role="tabpanel">
+          <div :class="[ 'tab-pane fade' , {  active : active_el == 3  } , {  show : active_el == 3  }]" id="manage-contact" role="tabpanel">
             <div class="iq-card">
               <div class="iq-card-header d-flex justify-content-between">
                 <div class="iq-header-title">
@@ -309,7 +309,8 @@ export default {
         { value: 'Georgia', text: 'Georgia' },
         { value: 'Connecticut', text: 'Connecticut' },
         { value: 'Louisiana', text: 'Louisiana' }
-      ]
+      ],
+      active_el: 0
     }
   },
   methods: {
@@ -331,7 +332,11 @@ export default {
       }
     },
     changePassword: function () {
+    },
+    activate: function (el) {
+      this.active_el = el
     }
+
   }
 }
 </script>

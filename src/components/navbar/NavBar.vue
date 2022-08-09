@@ -218,7 +218,7 @@
                                 <h5 class="mb-0 text-white line-height">Hello Houssam</h5>
                                 <span class="text-white font-size-12">Available</span>
                               </div>
-                              <router-link to="/" class="iq-sub-card iq-bg-primary-hover">
+                              <router-link to="/user/profile" class="iq-sub-card iq-bg-primary-hover">
                                 <div class="media align-items-center">
                                     <div class="rounded iq-card-icon iq-bg-primary">
                                       <i class="ri-file-user-line"></i>
@@ -252,7 +252,7 @@
                                 </div>
                               </router-link>
                               <div class="d-inline-block w-100 text-center p-3">
-                                <a class="bg-primary iq-sign-btn" href="#" role="button">Sign out<i class="ri-login-box-line ml-2"></i></a>
+                                <router-link to="/auth/signIn" class="bg-primary iq-sign-btn" href="#" role="button">Sign out<i class="ri-login-box-line ml-2"></i></router-link>
                               </div>
                           </div>
                         </div>
