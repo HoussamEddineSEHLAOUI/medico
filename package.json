@@ -17,6 +17,7 @@
     "jquery": "^3.6.0",
     "lottie-web": "^5.9.6",
     "node-snackbar": "^0.1.16",
+    "ramda": "^0.28.0",
     "smooth-scrollbar": "^8.7.5",
     "vue": "^3.2.37",
     "vue-router": "^4.0.3",

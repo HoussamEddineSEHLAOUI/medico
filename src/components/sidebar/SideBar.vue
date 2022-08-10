@@ -11,10 +11,10 @@
                      <router-link to="/listfiles" class="iq-waves-effect"><i class="las la-user"></i><span>Ma liste</span></router-link>
                   </li>
                   <li>
-                     <router-link to="" class="iq-waves-effect"><i class="las la-user-friends"></i><span>Label1</span></router-link>
+                     <router-link to="/app/chat" class="iq-waves-effect"><i class="las la-user-friends"></i><span>Label1</span></router-link>
                   </li>
                   <li>
-                     <router-link to="" class="iq-waves-effect"><i class="las la-users"></i><span>Label2</span></router-link>
+                     <router-link to="" class="iq-waves-effect active"><i class="las la-users"></i><span>Label2</span></router-link>
                   </li>
                   <li>
                      <router-link to="" class="iq-waves-effect"><i class="las la-image"></i><span>Label3</span></router-link>

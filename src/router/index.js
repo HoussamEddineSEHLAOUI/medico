@@ -23,6 +23,9 @@ const ProfileEdit = () => import('../views/User/ProfileEdit')
 const AddUser = () => import('../views/User/AddUser')
 const AccountSettings = () => import('../views/User/AccountSetting')
 
+// chat View
+const ChatIndex = () => import('../views/Chat/Index')
+
 const childRoutes = (prop, mode) => [
   {
     path: '/',
@@ -98,6 +101,15 @@ const authChildRoutes = (prop, mode = false) => [
   }
 ]
 
+const appChildRoute = (prop, mode = false) => [
+  {
+    path: 'chat',
+    name: prop + '.chat',
+    meta: { auth: true, name: 'Chat' },
+    component: ChatIndex
+  }
+]
+
 const routes = [
   {
     path: '/',
@@ -117,6 +129,13 @@ const routes = [
     name: 'user',
     component: Layout,
     children: userChildRoute('user')
+  },
+  {
+    path: '/app',
+    name: 'app',
+    component: Layout,
+    meta: { auth: true },
+    children: appChildRoute('app')
   }
 ]
 

@@ -79,7 +79,7 @@
                                              <textarea name="address" class="form-control" id="address" rows="5" required="required"></textarea>
                                           </div>
                                        </div>
-                                       <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" @click="goTo(1)" >Next</button>
+                                       <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" @click="activate(1)" >Next</button>
                                     </div>
                                  </div>
                               </div>
@@ -111,8 +111,8 @@
                                              </select>
                                           </div>
                                        </div>
-                                       <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" @click="goTo(2)" >Next</button>
-                                       <button class="btn btn-secondary  btn-lg pull-left" type="button" @click="goBack()" >Previous</button>
+                                       <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" @click="activate(2)" >Next</button>
+                                       <button class="btn btn-secondary  btn-lg pull-left" type="button" @click="activate(0)" >Previous</button>
                                     </div>
                                  </div>
                               </div>
@@ -134,8 +134,8 @@
                                           <input type="file" class="form-control" name="pic-2" accept="image/*" id="file-input">
                                        </div>
                                     </div>
-                                       <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" @click="goTo(3)" >Next</button>
-                                       <button class="btn btn-secondary btn-lg pull-left" type="button" @click="goBack()" >Previous</button>
+                                       <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" @click="activate(3)" >Next</button>
+                                       <button class="btn btn-secondary btn-lg pull-left" type="button" @click="activate(1)" >Previous</button>
                                     </div>
                                  </div>
                               </div>
@@ -169,7 +169,7 @@ export default {
   },
   data () {
     return {
-      active_el: 2
+      active_el: 0
     }
   }
 
