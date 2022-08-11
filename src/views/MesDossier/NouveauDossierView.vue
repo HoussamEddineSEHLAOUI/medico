@@ -144,7 +144,7 @@
                                     <div class="col-md-12 p-0">
                                        <h3 class="mb-4 text-left">Finish:</h3>
                                        <div class="row justify-content-center">
-                                          <div class="col-3"> <img src="@/assets/images/bg-03.jpg" class="fit-image" alt="img-success"> </div>
+                                          <div class="col-6"><lottie :option="require('@/assets/images/success.json')" id="lottie-succes" /></div>
                                        </div>
                                     </div>
                                  </div>
@@ -156,9 +156,10 @@
                </div>
 </template>
 <script>
+import Lottie from '@/components/lottie/Lottie'
 export default {
   name: 'NouveauDossierView',
-  components: {},
+  components: { Lottie },
   methods: {
     miniSidebar () {
       this.$emit('toggle')
@@ -169,7 +170,7 @@ export default {
   },
   data () {
     return {
-      active_el: 0
+      active_el: 3
     }
   }
 
