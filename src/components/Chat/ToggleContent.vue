@@ -3,7 +3,7 @@
                                           <div class="chat-head">
                                              <header class="d-flex justify-content-between align-items-center bg-white pt-3 pr-3 pb-3">
                                                 <div class="d-flex align-items-center">
-                                                   <div class="sidebar-toggle">
+                                                   <div class="sidebar-toggle" @click="showSideBareChat">
                                                       <i class="ri-menu-3-line"></i>
                                                    </div>
                                                    <div class="avatar chat-user-profile m-0 mr-3">
@@ -187,6 +187,11 @@
 export default {
   name: 'ToggleContent',
   props: {},
-  methods: {}
+  methods: {
+    showSideBareChat: function () {
+      this.$emit('showSideBareChat')
+    }
+
+  }
 }
 </script>

@@ -20,10 +20,10 @@
                   <a class="search-link" href="#"><i class="ri-search-line"></i></a>
               </form>
             </div>
-            <button class="navbar-toggler" :class="visible ? null : 'collapsed'" :aria-expanded="visible ? 'true' : 'false'" aria-controls="collapse-4" @click="visible = !visible">
-              <i class="ri-menu-3-line"></i>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"  aria-label="Toggle navigation">
+                  <i class="ri-menu-3-line"></i>
             </button>
-            <collapse id="collapse-4" v-model="visible">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto navbar-list">
                   <li>
                     <a href="#" class="iq-waves-effect d-flex align-items-center">
@@ -259,7 +259,7 @@
                     </div>
                   </li>
               </ul>
-            </collapse>
+            </div>
         </nav>
       </div>
     </div>

@@ -5,7 +5,7 @@
                         <div class="iq-card-body chat-page p-0">
                            <div class="chat-data-block">
                               <div class="row">
-                                 <div class="col-lg-3 chat-data-left scroller">
+                                 <div :class="[ 'col-lg-3 chat-data-left scroller' , {  show : showSideChat == true  }]">
                                     <div class="chat-search pt-3 pl-3">
                                        <div class="d-flex align-items-center">
                                           <div class="chat-profile mr-3">
@@ -15,7 +15,7 @@
                                              <h5 class="mb-0">Bni Jordan</h5>
                                              <p class="m-0">Web Designer</p>
                                           </div>
-                                          <button type="submit" class="close-btn-res p-3"><i class="ri-close-fill"></i></button>
+                                          <button type="submit" class="close-btn-res p-3" @click="showSideBareChat()"><i class="ri-close-fill"></i></button>
                                        </div>
                                        <div id="user-detail-popup" class="scroller">
                                           <div class="user-pro file">
@@ -67,13 +67,13 @@
                                        <div v-if="showChatId == 'default'" id="default-block" role="tabpanel">
                                           <div class="chat-start">
                                              <span class="iq-start-icon text-primary"><i class="ri-message-3-line"></i></span>
-                                             <button id="chat-start" class="btn bg-white mt-3">Start
+                                             <button id="chat-start" class="btn bg-white mt-3" @click="showSideBareChat()">Start
                                              Conversation!</button>
                                           </div>
                                        </div>
                                     </div>
-                                    <ToggleContent v-if="showChatId == 'chat1'"></ToggleContent>
-                                    <ToggleContent v-if="showChatId == 'chat2'"></ToggleContent>
+                                    <ToggleContent v-if="showChatId == 'chat1'" @showSideBareChat="showSideBareChat"></ToggleContent>
+                                    <ToggleContent v-if="showChatId == 'chat2'" @showSideBareChat="showSideBareChat"></ToggleContent>
                                  </div>
                               </div>
                            </div>
@@ -115,7 +115,8 @@ export default {
   data () {
     return {
       search: '',
-      showChatId: 'default'
+      showChatId: 'default',
+      showSideChat: false
     }
   },
   methods: {
@@ -141,6 +142,9 @@ export default {
     showChatContent: function (id) {
       console.log(id)
       this.showChatId = id
+    },
+    showSideBareChat: function () {
+      this.showSideChat = !this.showSideChat
     }
   }
 }

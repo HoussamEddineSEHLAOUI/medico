@@ -105,8 +105,7 @@
                                           <div class="form-group col-md-6">
                                              <label for="type" class="control-label">Spécialité: *</label>
                                              <select class="form-control" id="type" name="type">
-                                                <option>California</option>
-                                                <option>Florida</option>
+                                                <option v-for="(specialite , index) in specialites" :key="index">{{specialite.type}}</option>
                                                 <option selected="">Autre</option>
                                              </select>
                                           </div>
@@ -156,6 +155,7 @@
                </div>
 </template>
 <script>
+import specialites from '@/assets/Api/SpecialiteApi'
 import Lottie from '@/components/lottie/Lottie'
 export default {
   name: 'NouveauDossierView',
@@ -170,7 +170,8 @@ export default {
   },
   data () {
     return {
-      active_el: 3
+      active_el: 0,
+      specialites: specialites
     }
   }
 
