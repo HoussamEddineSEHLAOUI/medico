@@ -14,10 +14,10 @@
                                     <a href="javascript:void();" class="mr-3 w-100 iq-notify iq-bg-primary rounded">Status</a>
                                     <div class="iq-card-header-toolbar d-flex align-items-center">
                                        <div class="dropdown">
-                                          <span class="dropdown-toggle " data-toggle="dropdown" @click="showDropMenu()">
+                                          <span class="dropdown-toggle " data-toggle="dropdown">
                                           <i class="ri-more-fill "></i>
                                           </span>
-                                          <div class="dropdown-menu dropdown-menu-right" :class="{ show: isShowDropMenu }" >
+                                          <div class="dropdown-menu dropdown-menu-right" >
                                              <a class="dropdown-item" href="#"><i class="ri-eye-fill mr-2"></i>View</a>
                                              <a class="dropdown-item" href="#"><i class="ri-delete-bin-6-fill mr-2"></i>Delete</a>
                                              <a class="dropdown-item" href="#"><i class="ri-pencil-fill mr-2"></i>Edit</a>
@@ -40,13 +40,9 @@ export default {
   components: {},
   props: ['number'],
   methods: {
-    showDropMenu () {
-      this.isShowDropMenu = !this.isShowDropMenu
-    }
   },
   data () {
     return {
-      isShowDropMenu: false
     }
   }
 

@@ -24,14 +24,13 @@
         <li class="list-inline-item"><a href="#">Terms of Use</a></li>
       </template>
       <template v-slot:right>
-        Copyright 2020 <a href="#">SocialV</a> All Rights Reserved.
+        Copyright 2020 <a href="#">Medico</a> All Rights Reserved.
       </template>
     </FooterStyle1>
   </div>
 </template>
 
 <script>
-// import LoadeR from './loader/Loader'
 import { socialvue } from '../config/pluginInit'
 import NavBar from '../components/navbar/NavBar.vue'
 import SideBar from '../components/sidebar/SideBar.vue'

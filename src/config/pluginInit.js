@@ -238,8 +238,8 @@ export const socialvue = {
   },
 
   checkElement (type, element) {
-    var found = false
-    var elements
+    let found = false
+    let elements
     switch (type) {
       case 'class':
         elements = document.getElementsByClassName(element)
@@ -288,7 +288,7 @@ export const socialvue = {
   },
 
   getActiveLink (item, activeRoute) {
-    var active = false
+    let active = false
     if (item.children !== undefined) {
       item.children.filter(function (child) {
         if (child.link.name === activeRoute) {
@@ -335,7 +335,7 @@ export const socialvue = {
     })
   },
   random (length) {
-    var result = ''
+    let result = ''
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
     var charactersLength = characters.length
     for (var i = 0; i < length; i++) {

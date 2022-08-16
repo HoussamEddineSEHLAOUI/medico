@@ -72,8 +72,7 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <ToggleContent v-if="showChatId == 'chat1'" @showSideBareChat="showSideBareChat"></ToggleContent>
-                                    <ToggleContent v-if="showChatId == 'chat2'" @showSideBareChat="showSideBareChat"></ToggleContent>
+                                    <ToggleContent v-if="showChatId != 'default'" @showSideBareChat="showSideBareChat"></ToggleContent>
                                  </div>
                               </div>
                            </div>
@@ -122,7 +121,7 @@ export default {
   methods: {
     checkUser (item, type) {
       const user = this.usersList.find(user => user.id === item)
-      var final
+      let final
       if (user !== undefined) {
         switch (type) {
           case 'name':
