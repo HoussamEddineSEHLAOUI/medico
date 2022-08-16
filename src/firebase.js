@@ -63,12 +63,3 @@ export function useChat () {
   }
   return { sendMessage, messages, saveImageMessage }
 }
-// const getChannels = () => {
-//   const q = query(messagesCollection)
-//   const unsubscribe = onSnapshot(q, (snapshot) => {
-//     snapshot.docs.map((doc) => { doc.data()})
-//   })
-//   return unsubscribe
-// }
-// console.log('GET SNAP SHOOT')
-// getChannels()

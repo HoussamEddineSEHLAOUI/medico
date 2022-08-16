@@ -10,7 +10,7 @@
             <div class="chat-message" v-if="text">
                 <p>{{text}}</p>
             </div>
-            <div class="chat-image" v-else>
+            <div class="chatimage" v-else>
                 <img :src="imageUrl" class="imgMessage ">
             </div>
         </div>
@@ -28,12 +28,19 @@ export default {
 }
 </script>
 <style scoped>
-.chat-image{
+.chat-left .chatimage{
   background-color: #50b6ff4a;
   margin: 10px;
   border-radius: 7px;
   width: 70%;
-
+  float: left;
+}
+.chatimage{
+  background-color: #50b6ff4a;
+  margin: 10px;
+  border-radius: 7px;
+  width: 70%;
+  float: right;
 }
 .imgMessage{
   margin-top: 10px;

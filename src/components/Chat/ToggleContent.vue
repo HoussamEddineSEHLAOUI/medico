@@ -84,17 +84,20 @@
                                              :storgeUrl="message.storgeUrl"
                                              ></MessageVue>
                                           </div>
-                                          <div class="chat-footer p-3 bg-white">
-                                             <form class="d-flex align-items-center"  action="javascript:void(0);">
-                                                <input  class="" @change="previewFiles" ref="inputFile" type="file" accept="image/*" capture="camera">
-                                                <button type="submit" @click="sendMessageImage()" class="btn btn-primary d-flex align-items-center"><i class="fa fa-paperclip" aria-hidden="true"></i><span class="d-none d-lg-block ml-1"></span></button>
+                                          <div class="chat-footer p-3 bg-white d-flex align-items-center">
+                                             <form class="col-1 btn btn-primary d-flex align-items-center p-2"  action="javascript:void(0);">
+                                                <label for="imgInput" class="btn btn-primary d-flex align-items-center">
+                                                   <i class="fa fa-paperclip p-10" aria-hidden="true"></i>
+                                                </label>
+                                                <input  class="chat-img m-10" @change="previewFiles" ref="inputFile" type="file" accept="image/*" capture="camera" id="imgInput">
+                                                <!-- <button type="submit" @click="sendMessageImage()" class="btn btn-primary d-flex align-items-center"><i class="fa fa-paperclip" aria-hidden="true"></i><span class="d-none d-lg-block ml-1"></span></button> -->
                                              </form>
-                                             <form class="d-flex align-items-center"  action="javascript:void(0);">
-                                                <div class="chat-attagement d-flex">
+                                             <form class="d-flex justify-content-end align-items-center col-10"  action="javascript:void(0);">
+                                                <!-- <div class="chat-attagement d-flex">
                                                    <a href><i class="fa fa-smile-o pr-3" aria-hidden="true"></i></a>
                                                    <a href="javascript:void();"><i class="fa fa-paperclip pr-3" aria-hidden="true"></i></a>
-                                                </div>
-                                                <input type="text" class="form-control mr-3" placeholder="Type your message" v-model="message">
+                                                </div> -->
+                                                <input type="text" class="form-control mr-5" placeholder="Type your message" v-model="message">
                                                 <button type="submit" @click="sendMessageChat" class="btn btn-primary d-flex align-items-center p-2"><i class="fa fa-paper-plane-o" aria-hidden="true"></i><span class="d-none d-lg-block ml-1">Send</span></button>
                                              </form>
                                             </div>
@@ -148,3 +151,11 @@ export default {
   }
 }
 </script>
+<style scoped>
+.chat-img{
+   border:  none;
+   display: none;
+   padding: 0px 0px;
+   cursor: pointer;
+}
+</style>
