@@ -1,6 +1,7 @@
-import { onUnmounted, ref } from 'vue'
+import { ref as refVue, onUnmounted } from 'vue'
 import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs, addDoc, onSnapshot, query, orderBy } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, updateDoc } from 'firebase/firestore'
+import { getStorage, uploadBytesResumable, getDownloadURL, ref } from 'firebase/storage'
 const firebaseConfig = {
   apiKey: 'AIzaSyADOdypHnoG3QOtGmbKvaPeZmcsGkhhuy4',
   authDomain: 'medico-chat-79970.firebaseapp.com',
@@ -15,38 +16,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const DB = getFirestore(app)
 const messagesCollection = collection(DB, 'messages')
+var LOADING_IMAGE_URL = ''
 export function useChat () {
-  // Get all the messages inside the chat :
-  const getMessagesOLD = async () => {
-    const messagesSnapshot = await getDocs(messagesCollection)
-    const messagesList = messagesSnapshot.docs.map(doc => (doc.data()))
-    return messagesList
-  }
-  // get messages with snaopshoot :
-  const getMessages = async () => {
-    const q = query(messagesCollection, orderBy('sentAt'))
-    var messagesList = []
-    onSnapshot(q, (snapshot) => {
-      messagesList = snapshot.docs.map(doc => (doc.data()))
-    })
-    console.log(messagesList)
-    return messagesList
-  }
-  const messages = ref([])
-  const q = query(messagesCollection, orderBy('sentAt'))
-  const unsubscribe = onSnapshot(q, (snapshot) => {
+  const messages = refVue([])
+  const q = query(messagesCollection, orderBy('timestamp'))
+  const unsub = onSnapshot(q, (snapshot) => {
     messages.value = snapshot.docs.map(doc => (doc.data()))
   })
-  onUnmounted(unsubscribe)
+  onUnmounted(unsub)
   // Send a messaage :
   const sendMessage = text => {
     const Data = {
-      userName: 'Houssam',
-      userId: 'id',
-      userPhotoURL: '@/assets/images/user/01.jpg',
-      sentAt: new Date(),
-      sentBy: 'Houssam',
-      messageText: text
+      name: 'Houssam',
+      imageUrl: LOADING_IMAGE_URL,
+      text: text,
+      profilePicUrl: 'getProfilePicUrl()',
+      timestamp: serverTimestamp()
     }
     addDoc(messagesCollection, Data)
       .then(messagesCollection => {
@@ -56,7 +41,27 @@ export function useChat () {
         console.log(error)
       })
   }
-  return { getMessages, sendMessage, getMessagesOLD, messages }
+  const saveImageMessage = async (file) => {
+    try {
+      const messageRef = await addDoc(collection(getFirestore(), 'messages'), {
+        name: '',
+        imageUrl: LOADING_IMAGE_URL,
+        profilePicUrl: 'getProfilePicUrl()',
+        timestamp: serverTimestamp()
+      })
+      const filePath = `/${file.name}`
+      const newImageRef = ref(getStorage(), filePath)
+      const fileSnapshot = await uploadBytesResumable(newImageRef, file)
+      const publicImageUrl = await getDownloadURL(newImageRef)
+      await updateDoc(messageRef, {
+        imageUrl: publicImageUrl,
+        storageUri: fileSnapshot.metadata.fullPath
+      })
+    } catch (error) {
+      console.error('There was an error uploading a file to Cloud Storage:', error)
+    }
+  }
+  return { sendMessage, messages, saveImageMessage }
 }
 // const getChannels = () => {
 //   const q = query(messagesCollection)

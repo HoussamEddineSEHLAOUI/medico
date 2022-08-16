@@ -79,13 +79,19 @@
                                           <div class="chat-content scroller" id="chatScrol">
                                              <MessageVue v-for="(message , key) in messages"
                                              :key="key"
-                                             :messageText="message.messageText"
+                                             :text="message.text"
+                                             :imageUrl="message.imageUrl"
+                                             :storgeUrl="message.storgeUrl"
                                              ></MessageVue>
                                           </div>
                                           <div class="chat-footer p-3 bg-white">
                                              <form class="d-flex align-items-center"  action="javascript:void(0);">
+                                                <input  class="" @change="previewFiles" ref="inputFile" type="file" accept="image/*" capture="camera">
+                                                <button type="submit" @click="sendMessageImage()" class="btn btn-primary d-flex align-items-center"><i class="fa fa-paperclip" aria-hidden="true"></i><span class="d-none d-lg-block ml-1"></span></button>
+                                             </form>
+                                             <form class="d-flex align-items-center"  action="javascript:void(0);">
                                                 <div class="chat-attagement d-flex">
-                                                   <a href="javascript:void();"><i class="fa fa-smile-o pr-3" aria-hidden="true"></i></a>
+                                                   <a href><i class="fa fa-smile-o pr-3" aria-hidden="true"></i></a>
                                                    <a href="javascript:void();"><i class="fa fa-paperclip pr-3" aria-hidden="true"></i></a>
                                                 </div>
                                                 <input type="text" class="form-control mr-3" placeholder="Type your message" v-model="message">
@@ -97,21 +103,19 @@
 <script>
 import { useChat } from '@/firebase'
 import MessageVue from './Message.vue'
-const { sendMessage, messages } = useChat()
+const { sendMessage, saveImageMessage } = useChat()
 export default {
   name: 'ToggleContent',
-  props: {},
+  props: ['messages'],
   components: { MessageVue },
-  created () {
-    this.messages = messages
-  },
   mounted () {
+    console.log('MONTED')
     this.ScrollToEndOfChat()
   },
   data () {
     return {
-      message: '',
-      messages: []
+      FileImg: null,
+      message: ''
     }
   },
   methods: {
@@ -124,12 +128,22 @@ export default {
         sendMessage(this.message)
       }
       this.message = ''
+      this.ScrollToEndOfChat()
+    },
+    previewFiles (event) {
+      this.FileImg = event.target.files[0]
+    },
+    sendMessageImage: function () {
+      var file = this.FileImg
+      if (file) {
+        saveImageMessage(file)
+        this.$refs.inputFile.value = null
+      }
+      this.ScrollToEndOfChat()
     },
     ScrollToEndOfChat: function () {
-      console.log('inside function')
       var container = this.$el.querySelector('#chatScrol')
-      console.log(container.scrollTop)
-      container.scrollTop = container.scrollHeight + 1000
+      container.scrollTop = container.scrollHeight
     }
   }
 }

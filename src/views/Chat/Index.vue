@@ -63,7 +63,7 @@
                                     </div>
                                  </div>
                                  <div class="col-lg-9 chat-data p-0 chat-data-right">
-                                    <div class="tab-content">
+                                    <!-- <div class="tab-content">
                                        <div v-if="showChatId == 'default'" id="default-block" role="tabpanel">
                                           <div class="chat-start">
                                              <span class="iq-start-icon text-primary"><i class="ri-message-3-line"></i></span>
@@ -71,8 +71,8 @@
                                              Conversation!</button>
                                           </div>
                                        </div>
-                                    </div>
-                                    <ToggleContent v-if="showChatId != 'default'" @showSideBareChat="showSideBareChat"></ToggleContent>
+                                    </div> -->
+                                    <ToggleContent @showSideBareChat="showSideBareChat" :messages="messages"></ToggleContent>
                                  </div>
                               </div>
                            </div>
@@ -84,6 +84,8 @@
 <script>
 import ChatItem from '@/components/Chat/ChatItem'
 import ToggleContent from '@/components/Chat/ToggleContent'
+import { useChat } from '@/firebase'
+const { messages } = useChat()
 
 export default {
   name: 'IndeX',
@@ -115,7 +117,8 @@ export default {
     return {
       search: '',
       showChatId: 'default',
-      showSideChat: false
+      showSideChat: false,
+      messages: messages
     }
   },
   methods: {
