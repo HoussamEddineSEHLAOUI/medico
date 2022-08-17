@@ -1,13 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 // import HomeView from '../views/HomeView.vue'
-
 /* Layouts */
 const Layout = () => import('../layouts/Layout')
 const AuthLayout = () => import('../layouts/AuthLayouts/AuthLayout')
-
-// About page
-// const About = () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-
+const HomeView = () => import('@/views/HomeView.vue')
 // Mes Dossier
 const NouveauDossierView = () => import('../views/MesDossier/NouveauDossierView')
 const ListDossierView = () => import('../views/MesDossier/ListDossierView')
@@ -22,13 +18,12 @@ const Profile = () => import('../views/User/Profile')
 const ProfileEdit = () => import('../views/User/ProfileEdit')
 const AddUser = () => import('../views/User/AddUser')
 const AccountSettings = () => import('../views/User/AccountSetting')
-
 // chat View
 const ChatIndex = () => import('../views/Chat/Index')
 
 const childRoutes = (prop, mode) => [
   {
-    path: '/',
+    path: '/newFile',
     name: prop + '.NewFile',
     meta: { auth: true, name: 'Medico App' },
     component: NouveauDossierView
@@ -113,7 +108,12 @@ const appChildRoute = (prop, mode = false) => [
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'homepage',
+    component: HomeView
+  },
+  {
+    path: '/app',
+    name: 'medico',
     component: Layout,
     children: childRoutes('social')
   },

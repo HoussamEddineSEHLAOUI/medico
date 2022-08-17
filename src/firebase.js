@@ -1,6 +1,6 @@
-import { ref as refVue, onUnmounted } from 'vue'
+import { ref as refVue } from 'vue'
 import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, updateDoc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, updateDoc, Timestamp } from 'firebase/firestore'
 import { getStorage, uploadBytesResumable, getDownloadURL, ref } from 'firebase/storage'
 const firebaseConfig = {
   apiKey: 'AIzaSyADOdypHnoG3QOtGmbKvaPeZmcsGkhhuy4',
@@ -15,23 +15,23 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 const DB = getFirestore(app)
-const messagesCollection = collection(DB, 'messages')
+const messagesCollection = collection(DB, 'Rooms/5K2XVvB3W0aJ27cZJeBP/messages')
 var LOADING_IMAGE_URL = ''
 export function useChat () {
   const messages = refVue([])
   const q = query(messagesCollection, orderBy('timestamp'))
-  const unsub = onSnapshot(q, (snapshot) => {
+  onSnapshot(q, (snapshot) => {
     messages.value = snapshot.docs.map(doc => (doc.data()))
   })
-  onUnmounted(unsub)
+  // onUnmounted(unsub)
   // Send a messaage :
   const sendMessage = text => {
     const Data = {
-      name: 'Houssam',
-      imageUrl: LOADING_IMAGE_URL,
+      name: 'Hey , i am a user',
+      userType: 'User',
       text: text,
-      profilePicUrl: 'getProfilePicUrl()',
-      timestamp: serverTimestamp()
+      profilePicUrl: 'https://www.seekpng.com/png/full/356-3562377_personal-user.png',
+      timestamp: Timestamp.now()
     }
     addDoc(messagesCollection, Data)
       .then(messagesCollection => {
@@ -43,7 +43,7 @@ export function useChat () {
   }
   const saveImageMessage = async (file) => {
     try {
-      const messageRef = await addDoc(collection(getFirestore(), 'messages'), {
+      const messageRef = await addDoc(collection(getFirestore(), 'Rooms/5K2XVvB3W0aJ27cZJeBP/messages'), {
         name: '',
         imageUrl: LOADING_IMAGE_URL,
         profilePicUrl: 'getProfilePicUrl()',

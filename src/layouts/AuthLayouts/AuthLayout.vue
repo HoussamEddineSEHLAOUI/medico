@@ -11,10 +11,10 @@
       </div>
       <b-container class="container p-0">
         <div class="row no-gutters">
-          <div class="col-md-6 text-center pt-5">
+          <!--  <div class="col-md-6 text-center pt-5">
             <div class="sign-in-detail text-white">
               <a class="sign-in-logo mb-5" href="#"><img src="@/assets/images/logo-full.png" class="img-fluid" alt="logo"></a>
-              <!-- <VueSlickCarousel :arrows="true" :dots="true">
+              <VueSlickCarousel :arrows="true" :dots="true">
                 <div class="item">
                   <img src="@/assets/images/login/1.png" class="img-fluid mb-4" alt="logo">
                   <h4 class="mb-1 text-white">Manage your orders</h4>
@@ -30,10 +30,10 @@
                   <h4 class="mb-1 text-white">Manage your orders</h4>
                   <p>It is a long established fact that a reader will be distracted by the readable content.</p>
                 </div>
-              </VueSlickCarousel> -->
+              </VueSlickCarousel>
             </div>
-          </div>
-          <div class="col-sm-6 bg-white pt-5">
+          </div> -->
+          <div class="bg-white pt-5 componentAut ">
             <div class="sign-in-from">
               <router-view></router-view>
             </div>
@@ -74,3 +74,14 @@ export default {
   }
 }
 </script>
+<style scoped>
+.componentAut{
+  height: 80vh;
+  max-width: 550px;
+  margin-top: 90px;
+  margin-right: 40px;
+  border-radius: 7px;
+  position: absolute;
+  right: 0;
+}
+</style>

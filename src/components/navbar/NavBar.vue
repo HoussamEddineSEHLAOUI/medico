@@ -1,6 +1,6 @@
 <template>
   <!-- TOP Nav Bar -->
-    <div class="iq-top-navbar">
+    <div class="iq-top-navbar ">
       <div class="iq-navbar-custom">
         <nav class="navbar navbar-expand-lg navbar-light p-0">
             <div class="iq-navbar-logo d-flex justify-content-between">

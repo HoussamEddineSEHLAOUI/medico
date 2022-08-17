@@ -55,24 +55,24 @@
                                              <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Votre Prénom" />
                                           </div>
                                           <div class="col-md-6 form-group">
-                                             <label for="uname" class="control-label">Date de naissance: </label>
-                                             <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter User Name">
+                                             <label for="cDB" class="control-label">Date de naissance: </label>
+                                             <input type="date" class="form-control" id="cDB" name="uname" placeholder="">
                                           </div>
                                           <div class="col-md-6 form-group">
                                              <label for="emailid" class="control-label">Email Id: *</label>
-                                             <input type="email" id="emailid" class="form-control" required="required" name="emailid" placeholder="Email ID">
+                                             <input type="email" id="emailid" class="form-control" required="required" name="emailid" placeholder="xyz@gmail.com">
                                           </div>
                                           <div class="col-md-6 form-group">
-                                             <label for="pwd" class="control-label">Pays</label>
-                                             <input type="password" class="form-control" required="required" id="pwd" name="pwd" placeholder="Password">
+                                             <label for="cpays" class="control-label">Pays</label>
+                                             <input type="text" class="form-control" required="required" id="cpays" name="pwd" placeholder="">
                                           </div>
                                           <div class="col-md-6 form-group">
-                                             <label for="cpwd" class="control-label">Ville</label>
-                                             <input type="password" class="form-control" id="cpwd" required="required" name="cpwd" placeholder="Confirm Password">
+                                             <label for="cville" class="control-label">Ville</label>
+                                             <input type="text" class="form-control" id="cville" required="required" name="cpwd" placeholder="">
                                           </div>
                                           <div class="col-md-6 form-group">
-                                             <label for="cno" class="control-label">Tél: *</label>
-                                             <input type="text" class="form-control" required="required" id="cno" name="cno" placeholder="Contact Number">
+                                             <label for="ctele" class="control-label">Tél: *</label>
+                                             <input type="text" class="form-control" required="required" id="ctele" name="cno" placeholder="">
                                           </div>
                                           <div class="col-md-12 mb-3 form-group">
                                              <label for="address" class="control-label">Address: *</label>

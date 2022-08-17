@@ -7,10 +7,9 @@
       <!-- TOP Nav Bar -->
       <NavBar @toggle="sidebarMini" ></NavBar>
        <!-- Right Nav Bar -->
-      <RightSideBar toggleClass="top-50 setting-toggle iq-card">
+      <!-- <RightSideBar toggleClass="top-50 setting-toggle iq-card">
         <i class="ri-sound-module-fill font-size-18 text-primary" />
-      </RightSideBar>
-
+      </RightSideBar> -->
       <!-- page content -->
       <div id="content-page" class="content-page">
         <div class="container">
@@ -34,14 +33,13 @@
 import { socialvue } from '../config/pluginInit'
 import NavBar from '../components/navbar/NavBar.vue'
 import SideBar from '../components/sidebar/SideBar.vue'
-import RightSideBar from '../components/rightsidebar/RightSideBar'
+// import RightSideBar from '../components/rightsidebar/RightSideBar'
 import FooterStyle1 from '../components/footer/FooterStyle1'
 export default {
   name: 'LayouT',
   components: {
     NavBar,
     SideBar,
-    RightSideBar,
     FooterStyle1
   },
   methods: {

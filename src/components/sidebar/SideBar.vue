@@ -5,7 +5,7 @@
             <nav class="iq-sidebar-menu">
                <ul id="iq-sidebar-toggle" class="iq-menu">
                   <li>
-                     <router-link to="/" class="iq-waves-effect"><i class="las la-newspaper"></i><span>Nouveau dossier</span></router-link>
+                     <router-link to="/newFile" class="iq-waves-effect"><i class="las la-newspaper"></i><span>Nouveau dossier</span></router-link>
                   </li>
                   <li>
                      <router-link to="/listfiles" class="iq-waves-effect"><i class="las la-user"></i><span>Ma liste</span></router-link>

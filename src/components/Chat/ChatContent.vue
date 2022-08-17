@@ -1,6 +1,6 @@
 <template>
-                              <div class=" " id="chatbox1" role="tabpanel">
-                                          <div class="chat-head">
+<div class=" " id="chatbox1" role="tabpanel">
+   <div class="chat-head">
                                              <header class="d-flex justify-content-between align-items-center bg-white pt-3 pr-3 pb-3">
                                                 <div class="d-flex align-items-center">
                                                    <div class="sidebar-toggle" @click="showSideBareChat">
@@ -75,17 +75,19 @@
                                                    </span>
                                                 </div>
                                              </header>
-                                          </div>
-                                          <div class="chat-content scroller" id="chatScrol">
-                                             <MessageVue v-for="(message , key) in messages"
-                                             :key="key"
-                                             :text="message.text"
-                                             :imageUrl="message.imageUrl"
-                                             :storgeUrl="message.storgeUrl"
-                                             ></MessageVue>
-                                          </div>
-                                          <div class="chat-footer p-3 bg-white d-flex align-items-center">
-                                             <form class="col-1 btn btn-primary d-flex align-items-center p-2"  action="javascript:void(0);">
+   </div>
+   <div class="chat-content scroller" id="chatScrol">
+      <MessageVue v-for="(message , key) in messages"
+      :key="key"
+      :text="message.text"
+      :timestamp="message.timestamp == null ? message.timestamp.toMillis() : Date.now()"
+      :imageUrl="message.imageUrl"
+      :storgeUrl="message.storgeUrl"
+      :userType="message.userType"
+      ></MessageVue>
+   </div>
+   <div class="chat-footer p-3 bg-white d-flex align-items-center">
+                                             <form class="col-1 d-flex align-items-center p-2"  action="javascript:void(0);">
                                                 <label for="imgInput" class="btn btn-primary d-flex align-items-center">
                                                    <i class="fa fa-paperclip p-10" aria-hidden="true"></i>
                                                 </label>
@@ -100,19 +102,18 @@
                                                 <input type="text" class="form-control mr-5" placeholder="Type your message" v-model="message">
                                                 <button type="submit" @click="sendMessageChat" class="btn btn-primary d-flex align-items-center p-2"><i class="fa fa-paper-plane-o" aria-hidden="true"></i><span class="d-none d-lg-block ml-1">Send</span></button>
                                              </form>
-                                            </div>
-                                        </div>
+   </div>
+</div>
 </template>
 <script>
 import { useChat } from '@/firebase'
 import MessageVue from './Message.vue'
 const { sendMessage, saveImageMessage } = useChat()
 export default {
-  name: 'ToggleContent',
+  name: 'ChatContent',
   props: ['messages'],
   components: { MessageVue },
   mounted () {
-    console.log('MONTED')
     this.ScrollToEndOfChat()
   },
   data () {
@@ -126,15 +127,20 @@ export default {
       this.$emit('showSideBareChat')
     },
     sendMessageChat: function () {
-      this.ScrollToEndOfChat()
       if (this.message !== '') {
         sendMessage(this.message)
+        this.message = ''
       }
-      this.message = ''
+      // if (file) {
+      //   saveImageMessage(file)
+      //   this.clearFileImages()
+      // }
       this.ScrollToEndOfChat()
     },
     previewFiles (event) {
       this.FileImg = event.target.files[0]
+      saveImageMessage(this.FileImg)
+      this.clearFileImages()
     },
     sendMessageImage: function () {
       var file = this.FileImg
@@ -147,6 +153,9 @@ export default {
     ScrollToEndOfChat: function () {
       var container = this.$el.querySelector('#chatScrol')
       container.scrollTop = container.scrollHeight
+    },
+    clearFileImages: function () {
+      this.$refs.inputFile.value = null
     }
   }
 }
