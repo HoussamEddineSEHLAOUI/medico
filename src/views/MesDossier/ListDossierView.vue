@@ -7,13 +7,17 @@
                         </div>
                      </div>
     </div>
-    <DossieR key="1" :number="0"></DossieR>
-    <DossieR key="2" :number="1"></DossieR>
-    <DossieR key="1" :number="2"></DossieR>
-    <DossieR key="2" :number="3"></DossieR>
+    <DossieR v-for="(dossier , key) in ListDosier"
+    :key="key"
+    :id="dossier?.id"
+    :ref_dossier="dossier?.ref_Dossier"
+    :status="dossier?.status"
+    :iliness_start_date="dossier?.iliness_start_date"
+    ></DossieR>
 </template>
 <script>
 import DossieR from '@/components/dossier/Dossier.vue'
+import { getDossierService } from '@/services/DossierService'
 export default {
   name: 'ListDossierView',
   components: {
@@ -21,7 +25,17 @@ export default {
   },
   methods: { },
   data () {
-    return {}
+    return {
+      ListDosier: []
+    }
+  },
+  mounted () {
+    getDossierService().then((response) => {
+      this.ListDosier = [...response?.data]
+      this.ListDosier.forEach((dos) => {
+        console.log(dos.ref_Dossier)
+      })
+    })
   }
 
 }

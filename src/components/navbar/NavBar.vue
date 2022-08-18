@@ -29,7 +29,7 @@
                     <a href="#" class="iq-waves-effect d-flex align-items-center">
                         <img src="@/assets/images/user/1.jpg" class="img-fluid rounded-circle mr-3" alt="user">
                         <div class="caption">
-                          <h6 class="mb-0 line-height">Houssam</h6>
+                          <h6 class="mb-0 line-height">{{firstName}}</h6>
                         </div>
                     </a>
                   </li>
@@ -215,7 +215,7 @@
                         <div class="iq-card shadow-none m-0">
                           <div class="iq-card-body p-0 ">
                               <div class="bg-primary p-3 line-height">
-                                <h5 class="mb-0 text-white line-height">Hello Houssam</h5>
+                                <h5 class="mb-0 text-white line-height">Hello {{firstName}}</h5>
                                 <span class="text-white font-size-12">Available</span>
                               </div>
                               <router-link to="/user/profile" class="iq-sub-card iq-bg-primary-hover">
@@ -252,7 +252,7 @@
                                 </div>
                               </router-link>
                               <div class="d-inline-block w-100 text-center p-3">
-                                <router-link to="/auth/signIn" class="bg-primary iq-sign-btn" href="#" role="button">Sign out<i class="ri-login-box-line ml-2"></i></router-link>
+                                <a class="bg-primary iq-sign-btn" role="button" @click="logOut">Sign out<i class="ri-login-box-line ml-2"></i></a>
                               </div>
                           </div>
                         </div>
@@ -268,6 +268,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import Lottie from '@/components/lottie/Lottie'
+import { getUser } from '@/services/LoginService'
 export default {
   name: 'NavBarStyle1',
   props: {
@@ -279,6 +280,9 @@ export default {
   },
   mounted () {
     document.addEventListener('click', this.closeSearch, true)
+    const response = getUser()
+    this.lastName = response.lastName
+    this.firstName = response.firstName
   },
   components: {
     Lottie
@@ -290,6 +294,8 @@ export default {
   },
   data () {
     return {
+      lastName: '',
+      firstName: '',
       visible: false,
       globalSearch: '',
       showSearch: false,
@@ -338,6 +344,11 @@ export default {
       this.showSearch = false
       this.showMenu = ''
       this.globalSearch = ''
+    },
+    logOut: async function () {
+      await localStorage.removeItem('token')
+      await localStorage.removeItem('user')
+      await this.$router.push('/auth/signIn')
     }
   }
 }

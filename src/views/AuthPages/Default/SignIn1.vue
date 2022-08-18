@@ -2,15 +2,15 @@
   <div>
     <h1 class="mb-0">Sign in</h1>
     <p>Enter your email address and password to access admin panel.</p>
-    <form class="mt-4">
+    <form class="mt-4" @submit.prevent="login">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control mb-0" id="exampleInputEmail1" placeholder="Enter email">
+        <input type="email" class="form-control mb-0" id="exampleInputEmail1" placeholder="Enter email" v-model="email">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <router-link to="/auth/password-reset" class="float-right">Forgot password?</router-link>
-        <input type="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password">
+        <input type="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password" v-model="password">
       </div>
       <div class="d-inline-block w-100">
         <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">
@@ -18,7 +18,7 @@
           <label class="custom-control-label" for="customCheck1">Remember Me</label>
         </div>
         <!-- <button type="submit" class="btn btn-primary float-right" @click="$router.push({name: 'social.list'})">Sign in</button> -->
-        <button type="submit" class="btn btn-primary float-right" >Sign in</button>
+        <button type="submit" class="btn btn-primary float-right" @click="login" >Sign in</button>
       </div>
       <div class="sign-info">
         <span class="dark-color d-inline-block line-height-2">Don't have an account? <router-link to="/auth/signUp">Sign up</router-link></span>
@@ -34,13 +34,20 @@
 </template>
 
 <script>
-
+import { loginService } from '@/services/LoginService'
 export default {
   name: 'SignIn1',
-  data: () => ({}),
-  mounted () {
-  },
+  data: () => ({
+    email: '',
+    password: ''
+
+  }),
   methods: {
+    login: function () {
+      loginService(this.email, this.password).then(() => {
+        this.$router.push('/listfiles')
+      })
+    }
   }
 }
 </script>

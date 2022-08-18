@@ -24,7 +24,6 @@ export function useChat () {
     messages.value = snapshot.docs.map(doc => (doc.data()))
   })
   // onUnmounted(unsub)
-  // Send a messaage :
   const sendMessage = text => {
     const Data = {
       name: 'Hey , i am a user',

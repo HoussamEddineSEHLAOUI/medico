@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { isLoggedIn } from '@/services/LoginService'
 // import HomeView from '../views/HomeView.vue'
 /* Layouts */
 const Layout = () => import('../layouts/Layout')
@@ -7,6 +8,7 @@ const HomeView = () => import('@/views/HomeView.vue')
 // Mes Dossier
 const NouveauDossierView = () => import('../views/MesDossier/NouveauDossierView')
 const ListDossierView = () => import('../views/MesDossier/ListDossierView')
+const ShowDossierView = () => import('@/views/MesDossier/ShowDossierView')
 /* Authentic View */
 const SignIn = () => import('../views/AuthPages/Default/SignIn1')
 const SignUp = () => import('../views/AuthPages/Default/SignUp1')
@@ -33,6 +35,12 @@ const childRoutes = (prop, mode) => [
     name: prop + 'listfiles',
     meta: { auth: true, name: 'listfiles' },
     component: ListDossierView
+  },
+  {
+    path: '/Details',
+    name: prop + 'Details',
+    meta: { auth: true, name: 'Details' },
+    component: ShowDossierView
   },
   {
     path: '/account-setting',
@@ -115,7 +123,10 @@ const routes = [
     path: '/app',
     name: 'medico',
     component: Layout,
-    children: childRoutes('social')
+    children: childRoutes('social'),
+    beforeEnter: (to, from) => {
+      if (!isLoggedIn()) return '/auth/signIn'
+    }
   },
   {
     path: '/auth',
@@ -128,14 +139,20 @@ const routes = [
     path: '/user',
     name: 'user',
     component: Layout,
-    children: userChildRoute('user')
+    children: userChildRoute('user'),
+    beforeEnter: (to, from) => {
+      if (!isLoggedIn()) return '/auth/signIn'
+    }
   },
   {
     path: '/app',
     name: 'app',
     component: Layout,
     meta: { auth: true },
-    children: appChildRoute('app')
+    children: appChildRoute('app'),
+    beforeEnter: (to, from) => {
+      if (!isLoggedIn()) return '/auth/signIn'
+    }
   }
 ]
 
